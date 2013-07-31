@@ -80,7 +80,7 @@ static int php_xz_compress(struct php_xz_stream_data_t *self)
 static int php_xz_init_decoder(struct php_xz_stream_data_t *self)
 {
   lzma_stream *strm = &self->strm;
-  lzma_ret ret = lzma_stream_decoder(strm, UINT64_MAX, LZMA_CONCATENATED);
+  lzma_ret ret = lzma_auto_decoder(strm, UINT64_MAX, LZMA_CONCATENATED);
   if (ret == LZMA_OK) {
     self->in_buf_sz = XZ_INBUF_SIZE;
     self->out_buf_sz = XZ_OUTBUF_SIZE;
